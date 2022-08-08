@@ -38,8 +38,8 @@ jobs:
                   path: |
                       ~/.cache/bazel
                       ~/.cache/bazel-repo
-                  key: bazel-cache-${{ hashFiles('**/BUILD.bazel', '**/*.bzl', 'WORKSPACE', '**/*.js') }}
-                  restore-keys: bazel-cache-
+                  key: bazel-cache-${{ matrix.folder }}-${{ hashFiles('**/BUILD.bazel', '**/*.bzl', 'WORKSPACE', '**/*.js') }}
+                  restore-keys: bazel-cache-${{ matrix.folder }}-
             - name: bazel test //...
               env:
                   # Bazelisk will download bazel to here
